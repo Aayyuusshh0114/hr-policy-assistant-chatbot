@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ask grounded questions about uploaded HR policy PDFs.">
+    <title>HR Policy Assistant</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div><p class="eyebrow">Policy workspace</p><h1>HR Assistant</h1>
+          <p class="muted">Answers grounded in your uploaded policy documents.</p></div>
+        <section aria-labelledby="documents-title">
+          <div class="section-heading"><h2 id="documents-title">Documents</h2>
+            <span id="document-count" class="badge">0</span></div>
+          <label class="upload-button" for="document-upload">Upload PDF</label>
+          <input id="document-upload" type="file" accept="application/pdf,.pdf" multiple>
+          <p id="upload-status" class="small muted" aria-live="polite"></p>
+          <ul id="document-list" class="document-list"></ul>
+        </section>
+        <section aria-labelledby="settings-title"><h2 id="settings-title">Model</h2>
+          <label class="field-label" for="provider">LLM provider</label>
+          <select id="provider" disabled><option>Loading…</option></select>
+          <p id="provider-help" class="small muted"></p></section>
+      </aside>
+      <main class="chat-panel">
+        <header class="chat-header"><div><p class="eyebrow">Current conversation</p>
+          <h2>Ask about HR policies</h2></div>
+          <button id="new-conversation" class="secondary-button" type="button">New chat</button>
+        </header>
+        <section id="messages" class="messages" aria-live="polite">
+          <div id="empty-state" class="empty-state"><h3>Upload a policy to begin</h3>
+            <p>Once indexing finishes, try one of these questions and inspect the cited pages.</p>
+            <div class="example-questions" aria-label="Example questions">
+              <button class="example-question" type="button">How many paid leave days are available?</button>
+              <button class="example-question" type="button">When is salary credited?</button>
+              <button class="example-question" type="button">Who can receive a referral reward?</button>
+              <button class="example-question" type="button">What notice period applies to Level 3?</button>
+            </div></div>
+        </section>
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="question">Question</label>
+          <textarea id="question" rows="2" maxlength="2000" placeholder="Ask about an HR policy…" disabled></textarea>
+          <button id="send-button" type="submit" disabled>Send</button>
+        </form>
+        <p id="app-error" class="error-message" role="alert"></p>
+      </main>
+    </div>
+    <script src="/static/js/api.js?v=3"></script><script src="/static/js/app.js?v=3"></script>
+  </body>
+</html>
