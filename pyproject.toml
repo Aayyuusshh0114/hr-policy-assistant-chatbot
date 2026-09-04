@@ -43,7 +43,7 @@ markers = [
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-extend-exclude = ["HR_Assistant_RAG.ipynb"]
+extend-exclude = ["notebooks/*.ipynb"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
